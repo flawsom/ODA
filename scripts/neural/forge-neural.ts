@@ -127,40 +127,62 @@ function untranslatedProseLines(content: string): string[] {
 // ---------------------------------------------------------------------------
 // Neural engine — llama.cpp via node-llama-cpp, dynamically imported so the
 // adaptive-only mode runs without the runtime installed.
+//
+// CRITICAL: We create exactly ONE LlamaChatSession per system prompt and reuse
+// it for every letter.  Creating a new session per call grabbed a new sequence
+// from the context pool each time, exhausting it ("No sequences left" on CI).
 // ---------------------------------------------------------------------------
-let _session: { prompt: (text: string, opts: Record<string, unknown>) => Promise<string> } | null = null;
 
-async function neuralComplete(system: string, user: string): Promise<string> {
-  if (_session) return (await _session.prompt(user, {
-    maxTokens: MAX_TOKENS,
-    temperature: 0.6,
-    topP: 0.9,
-    repeatPenalty: 1.05,
-    signal: AbortSignal.timeout(20 * 60 * 1000),
-  })).trim();
+let _translateSession: any = null;
+let _responseSession: any = null;
+
+async function initNeuralEngine(): Promise<{
+  translate: (user: string) => Promise<string>;
+  response: (user: string) => Promise<string>;
+}> {
+  if (_translateSession) {
+    return {
+      translate: (u: string) => _translateSession.prompt(u, { maxTokens: MAX_TOKENS }),
+      response: (u: string) => _responseSession?.prompt(u, { maxTokens: MAX_TOKENS }),
+    };
+  }
 
   const { getLlama, LlamaChatSession } = await import("node-llama-cpp");
   const llama = await getLlama();
   const model = await llama.loadModel({ modelPath: MODEL_PATH, gpu: false });
   const context = await model.createContext({ contextSize: CTX });
+
   // Qwen3 outputs `<think>` tokens by default. Disable thinking mode
   // so the model goes straight to translation output.
   const isQwen3 = /qwen.?3/i.test(MODEL_NAME);
-  const sys = isQwen3 ? `${system}\n/no_think` : system;
-  _session = {
-    prompt: (text: string, opts: Record<string, unknown>) =>
-      new LlamaChatSession({
+  const translateSys = isQwen3 ? `${TRANSLATE_SYSTEM}\n/no_think` : TRANSLATE_SYSTEM;
+  const responseSys = isQwen3 ? `${RESPONSE_SYSTEM}\n/no_think` : RESPONSE_SYSTEM;
+
+  // Create ONE session per task using separate sequences from the context.
+  // Each LlamaChatSession manages its own sequence internally.
+  _translateSession = new LlamaChatSession({
+    contextSequence: context.getSequence(),
+    systemPrompt: translateSys,
+  });
+
+  // Only create response session if task includes responses (uses 2nd sequence).
+  // On 7GB runners with small contexts, skip the response session to save memory.
+  if (TASK === "both" || TASK === "response") {
+    try {
+      _responseSession = new LlamaChatSession({
         contextSequence: context.getSequence(),
-        systemPrompt: sys,
-      }).prompt(text, opts),
+        systemPrompt: responseSys,
+      });
+    } catch (err) {
+      console.warn(`[forge] Could not create response session (continuing with translate only): ${err instanceof Error ? err.message : err}`);
+      _responseSession = null;
+    }
+  }
+
+  return {
+    translate: (u: string) => _translateSession.prompt(u, { maxTokens: MAX_TOKENS }),
+    response: (u: string) => _responseSession?.prompt(u, { maxTokens: MAX_TOKENS }) ?? Promise.resolve(""),
   };
-  return (await _session.prompt(user, {
-    maxTokens: MAX_TOKENS,
-    temperature: 0.6,
-    topP: 0.9,
-    repeatPenalty: 1.05,
-    signal: AbortSignal.timeout(20 * 60 * 1000),
-  })).trim();
 }
 
 function loadOverlay(): GlossaryOverlay {
@@ -180,6 +202,17 @@ async function main(): Promise<void> {
   const neural = !NO_NEURAL && MODEL_PATH.length > 0;
   if (neural) console.log(`[forge] Neural engine: ${MODEL_NAME} (${MODEL_PATH}) — free, keyless, local`);
   else console.log("[forge] Adaptive engine only (no --model given or --no-neural)");
+
+  // Pre-initialize neural engine so model loads once before the letter loop
+  let engine: { translate: (u: string) => Promise<string>; response: (u: string) => Promise<string> } | null = null;
+  if (neural) {
+    try {
+      engine = await initNeuralEngine();
+    } catch (err) {
+      console.error(`[forge] Failed to load neural model: ${err instanceof Error ? err.message : err}`);
+      console.log("[forge] Falling back to adaptive engine");
+    }
+  }
 
   const files: string[] = [];
   const walk = (dir: string) => {
@@ -237,10 +270,11 @@ async function main(): Promise<void> {
     if (TASK === "both" || TASK === "translate") {
       try {
         const source = text.slice(0, MAX_CHARS);
+
         let content: string;
-        let engine: "neural" | "adaptive" = "adaptive";
+        let engineName: "neural" | "adaptive" = "adaptive";
         let complete = false;
-        if (neural) {
+        if (neural && engine) {
           try {
             const input: NeuralPromptInput = {
               sourceText: source,
@@ -253,8 +287,8 @@ async function main(): Promise<void> {
               task: "translate",
             };
             const user = `${buildUserPrompt(input)}\n${glossaryPromptBlock(overlay, LANG)}`;
-            content = await neuralComplete(TRANSLATE_SYSTEM, user);
-            engine = "neural";
+            content = await engine.translate(user);
+            engineName = "neural";
             neuralOk++;
             // Training memory guarantee + reference-standard + letterhead —
             // identical post-processing to the cloud forge.
@@ -276,10 +310,10 @@ async function main(): Promise<void> {
           content = res.content;
           complete = res.complete;
         }
-        result.engine = engine;
+        result.engine = engineName;
         const keptNote = /kept in the source language/.test(content);
         const untranslated = untranslatedProseLines(content);
-        const reallyComplete = engine === "neural" ? untranslated.length === 0 : complete && !keptNote && untranslated.length === 0;
+        const reallyComplete = engineName === "neural" ? untranslated.length === 0 : complete && !keptNote && untranslated.length === 0;
         const rated = rateTranslation({ sourceText: text, complete: reallyComplete, language: LANG });
         result.translate = {
           complete: reallyComplete,
@@ -310,7 +344,7 @@ async function main(): Promise<void> {
     if (TASK === "both" || TASK === "response") {
       try {
         let content: string;
-        if (neural) {
+        if (neural && engine) {
           const input: NeuralPromptInput = {
             sourceText: text.slice(0, MAX_CHARS),
             sourceName: name,
@@ -321,7 +355,7 @@ async function main(): Promise<void> {
             format: "Markdown",
             task: "response",
           };
-          content = await neuralComplete(RESPONSE_SYSTEM, buildUserPrompt(input));
+          content = await engine.response(buildUserPrompt(input));
           neuralOk++;
         } else {
           content = adaptiveGenerate(doc, { language: "English", formality: "Formal", format: "Markdown" }).content;
