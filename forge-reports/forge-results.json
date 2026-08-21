@@ -1,7 +1,8 @@
 {
-  "generatedAt": "2026-08-21T03:00:12.018Z",
-  "engine": "adaptive",
+  "generatedAt": "2026-08-21T19:36:22.085Z",
+  "engine": "neural · qwen3:4b",
   "model": "qwen3:4b",
+  "language": "Hindi",
   "docs": [
     {
       "name": "Appointment-Order_Rajesh-Mehra_DEPT-42-2026",
@@ -9,7 +10,7 @@
       "format": "txt",
       "chars": 999,
       "script": "English",
-      "translation": "संख्या डीईपीटी/42-2026/118\nराजस्व प्रशासन विभाग\nसिविल सचिवालय, गांधीनगर\nदिनांक:16 जून 2026\n\nसेवा में,\nश्री राजेश मेहरा,\nसहायक आयुक्त (ग्रेड I)\n\nविषय:- नियुक्ति आदेश — संयुक्त आयुक्त, केंद्रीय प्रभाग के रूप में पदस्थापन\n\nमहोदय,\n\nविज्ञापन संख्या रा/19-2025 के अंतर्गत अधिसूचित चयन प्रक्रिया की निरंतरता में तथा विभागीय पदोन्नति समिति की सिफारिश पर, यह विभाग आपको 01 जुलाई 2026 की पूर्वाह्न से प्रभावी रूप से संयुक्त आयुक्त, केंद्रीय प्रभाग के रूप में नियुक्त करता है। नियुक्ति की शर्तें संलग्न नियुक्ति प्रपत्र में निहित हैं।\n\nआपको इस आदेश की तिथि से पंद्रह दिनों के भीतर राजस्व प्रशासन विभाग के प्रधान सचिव के समक्ष कार्यभार ग्रहण हेतु रिपोर्ट करने का निर्देश दिया जाता है।\nवेतनमान एवं भत्तों सहित नियुक्ति की शर्तें संलग्न प्रपत्र में निर्धारित अनुसार होंगी। यह आदेश सक्षम प्राधिकारी के अनुमोदन से जारी किया गया है।\n\nभवदीय,\n(अनिता देशपांडे)\nसरकार के उप सचिव",
+      "translation": "संख्या डीईपीटी/42-2026/118\nराजस्व प्रशासन विभाग\nसिविल सचिवालय, गांधीनगर\nदिनांक:16 जून 2026\n\nसेवा में,\nश्री राजेश मेहरा,\nसहायक आयुक्त (ग्रेड मैं)\n\nविषय:- नियुक्ति आदेश — संयुक्त आयुक्त, केंद्रीय प्रभाग के रूप में पदस्थापन\n\nमहोदय,\n\nविज्ञापन संख्या रा/19-2025 के अंतर्गत अधिसूचित चयन प्रक्रिया की निरंतरता में तथा विभागीय पदोन्नति समिति की सिफारिश पर, यह विभाग आपको 01 जुलाई 2026 की पूर्वाह्न से प्रभावी रूप से संयुक्त आयुक्त, केंद्रीय प्रभाग के रूप में नियुक्त करता है। नियुक्ति की शर्तें संलग्न नियुक्ति प्रपत्र में निहित हैं।\n\nआपको इस आदेश की तिथि से पंद्रह दिनों के भीतर राजस्व प्रशासन विभाग के प्रधान सचिव के समक्ष कार्यभार ग्रहण हेतु रिपोर्ट करने का निर्देश दिया जाता है।\nवेतनमान एवं भत्तों सहित नियुक्ति की शर्तें संलग्न प्रपत्र में निर्धारित अनुसार होंगी। यह आदेश सक्षम प्राधिकारी के अनुमोदन से जारी किया गया है।\n\nभवदीय,\n(अनिता देशपांडे)\nसरकार के उप सचिव",
       "tEngine": "adaptive",
       "complete": true,
       "rating": "complete",
@@ -18,7 +19,24 @@
       "response": "Date: 21 August 2026\n\nTo,\nThe Under Secretary to Government\n\nSubject: Appointment Order - posting as Joint Commissioner, Central Division\nRef: No. DEPT/42-2026/118\n\nRespected Sir/Madam,\n\nWe acknowledge receipt of your communication on the subject \"Appointment Order - posting as Joint Commissioner, Central Division\". The matter has been taken on record and is receiving our attention.\nThe necessary action is being initiated, and you will be apprised of the outcome in due course. Please quote the reference noted above in all future correspondence.\n\nYours faithfully,\n\n(Signature)\n\n— Forged on-device by ODA · mirrors the input's structure, register and references",
       "rEngine": "adaptive",
       "responseOk": true,
-      "ms": 27
+      "ms": 30
+    },
+    {
+      "name": "University-Notice_Kalinga-University_KU-ADMIN-2026-412",
+      "rel": "University-Notice_Kalinga-University_KU-ADMIN-2026-412.txt",
+      "format": "txt",
+      "chars": 1148,
+      "script": "English",
+      "translation": "संख्या कु/अदमिन/2026/412\nकलिंगा विश्वविद्यालय\nप्रशासनिक कार्यालय\nभुवनेश्वर, ओडिशा 751024\nदिनांक:10 अगस्त 2026\n\nसेवा में,\nरजिस्ट्रार,\nराज्य प्रौद्योगिकी विश्वविद्यालय,\nकटक, ओडिशा 753001\n\nविषय: सूचना - वार्षिक परीक्षा कार्यक्रम के लिए शैक्षणिक सत्र 2025-26\n\nमहोदय,\n\nअधिसूचना संख्या कु/एक्षम/2026/88 के अंतर्गत अधिसूचित परीक्षा कैलेंडर की निरंतरता में, प्रथम एवं द्वितीय वर्ष के सभी छात्रों को सूचित किया जाता है कि शैक्षणिक सत्र 2025-26 की वार्षिक परीक्षाएँ 01 अक्टूबर 2026 को पूर्वाह्न सत्र में प्रारंभ होंगी।\n\nपरीक्षा कार्यक्रम, प्रवेश पत्र वितरण तथा प्रश्नपत्रों का पाठ्यक्रम संबंधित विभागाध्यक्षों द्वारा समय पर सूचित किया जाएगा।\nछात्रों को निर्देशित किया जाता है कि वे परीक्षा शुल्क रु. 1200/- परीक्षा अनुभाग में 15 सितंबर 2026 को या उससे पूर्व जमा करें। निर्धारित अवधि के भीतर शुल्क जमा न करने वाले छात्रों को परीक्षाओं में उपस्थित होने की अनुमति नहीं दी जाएगी।\n\nकिसी छात्र के नामांकन विवरण में किसी भी विसंगति को तुरंत परीक्षा अनुभाग के संज्ञान में लाया जा सकता है।\n\nभवदीय,\n(डॉ. सुजाता मिश्रा)\nपरीक्षा नियंत्रक",
+      "tEngine": "adaptive",
+      "complete": true,
+      "rating": "complete",
+      "ratingNote": "Complete letter-for-letter translation — no CMPFO reference family detected; structure preserved, every line translated.",
+      "ratingScore": 92,
+      "response": "Date: 21 August 2026\n\nTo,\nDr. Sujata Mishra\n\nSubject: Notice - Annual Examination Schedule for the Academic Session 2025-26\nRef: No. KU/ADMIN/2026/412\n\nRespected Sir/Madam,\n\nReceipt of the notification on \"Notice - Annual Examination Schedule for the Academic Session 2025-26\" is hereby acknowledged. The contents have been duly noted for compliance.\nAll concerned have been apprised of the instructions contained therein, and compliance reports will be submitted as required.\n\nYours faithfully,\n\n(Signature)\n\n— Forged on-device by ODA · mirrors the input's structure, register and references",
+      "rEngine": "adaptive",
+      "responseOk": true,
+      "ms": 5
     },
     {
       "name": "Complaint_Non-Delivery-Pension_P-Wing-Digilocker",
@@ -26,33 +44,16 @@
       "format": "txt",
       "chars": 1125,
       "script": "English",
-      "translation": "दिनांक:18 मार्च 2026\n\nसेवा में,\nआयुक्त,\nपेंशन एवं कल्याण विभाग\nपी-विंग, सिविल लाइन्स, नई दिल्ली\n\nविषय:- Complaint regarding non-delivery of pension for January-February 2026\n\nप्रिय महोदय/महोदया,\n\nमैं, श्रीमती उषा रानी देवी, पेंशनभोगी, पीपीओ संख्या PPO/D-77412, यह औपचारिक शिकायत दर्ज करती हूँ कि जनवरी एवं फरवरी 2026 माह का मेरा पेंशन भारतीय स्टेट बैंक में मेरे खाते (खाता संख्या 40213577890, आईएफएससी SBIN0001142) में जमा नहीं किया गया।\n\n05 जनवरी 2026 को डिजिलॉकर के माध्यम से जीवन प्रमाण पत्र प्रस्तुत करने तथा संदर्भ संख्या DL/2026/88453 की पावती प्राप्त करने के बावजूद, भुगतान जारी नहीं किया गया है।\nमैंने तीन बार पेंशन वितरण कार्यालय का दौरा किया है और हर बार हेल्पलाइन पर कॉल किया है; अब तक कोई समाधान नहीं मिला है।\n\nइस विलंब से मुझे और मेरे परिवार को गंभीर कठिनाई हुई है।\nमेरा अनुरोध है कि मामले की तुरंत जाँच की जाए और मेरी लंबित पेंशन नियमों के अनुसार ब्याज सहित शीघ्र अतिशीघ्र जमा की जाए।\n\nसंदर्भ के लिए मैंने पावती की एक प्रति और अपना पी.पी.ओ. संलग्न किया है।\n\nभवदीय,\n(उषा रानी देवी)\nपेंशनभोगी, पीपीओ/D-77412\nसंपर्क: 9876543210",
+      "translation": "— नीचे का मूल पाठ स्रोत भाषा में सुरक्षित रखा गया है। पूर्ण अनुवाद के लिए न्यूरल फोर्ज (निःशुल्क, आपके डिवाइस पर) चालू करें। (1 line kept in the source language)\n\nदिनांक:18 मार्च 2026\n\nसेवा में,\nआयुक्त,\nविभाग पेंशन एवं वेलफरे,\nपी-विंग, सिविल लाइन्स, नई दिल्ली\n\nविषय: शिकायत संबंधी non-delivery पेंशन के लिए January-February 2026\n\nप्रिय महोदय/महोदया,\n\nमैं, श्रीमती. उशा रनि देवि, पेंसिनेर बेरिंग प्पो संख्या, प्पो/डी-77412, इसके द्वारा लोदगे फोरमल शिकायत संबंधी non-crediting मेरा पेंशन के लिए माह जनुरय एवं फेबरुरय 2026 से मेरा खाता साथ कहा जाता है बैंक भारत (ए/सी संख्या- 40213577890, इफसक SBIN0001142).\n\n05 जनवरी 2026 को डिजिलॉकर के माध्यम से जीवन प्रमाण पत्र प्रस्तुत करने तथा संदर्भ संख्या DL/2026/88453 की पावती प्राप्त करने के बावजूद, भुगतान जारी नहीं किया गया है।\nमैंने तीन बार पेंशन वितरण कार्यालय का दौरा किया है और हर बार हेल्पलाइन पर कॉल किया है; अब तक कोई समाधान नहीं मिला है।\n\nइस विलंब से मुझे और मेरे परिवार को गंभीर कठिनाई हुई है।\nमेरा अनुरोध है कि मामले की तुरंत जाँच की जाए और मेरी लंबित पेंशन नियमों के अनुसार ब्याज सहित शीघ्र अतिशीघ्र जमा की जाए।\n\nसंदर्भ के लिए मैंने पावती की एक प्रति और अपना पी.पी.ओ. संलग्न किया है।\n\nभवदीय,\n(उषा रानी देवी)\nपेंशनभोगी, पीपीओ/D-77412\nसंपर्क: 9876543210",
       "tEngine": "adaptive",
-      "complete": true,
-      "rating": "complete",
-      "ratingNote": "Complete letter-for-letter translation — no CMPFO reference family detected; structure preserved, every line translated.",
-      "ratingScore": 92,
-      "response": "Date: 18 August 2026\n\nTo,\nUsha Rani Devi\n\nSubject: Complaint regarding non-delivery of pension for January-February 2026\n\nRespected Sir/Madam,\n\nWe have carefully examined the concerns raised in your communication regarding \"Complaint regarding non-delivery of pension for January-February 2026\" and regret the inconvenience caused.\nYour complaint has been registered with our office and assigned for immediate review. A detailed action plan addressing each point raised will be furnished to you within seven working days. Corrective measures will be taken wherever warranted.\n\nYours faithfully,\n\n(Signature)\n\n— Forged on-device by ODA · mirrors the input's structure, register and references",
+      "complete": false,
+      "rating": "partial",
+      "ratingNote": "Partial letter — some lines were kept in the source language; enable the neural forge for full prose.",
+      "ratingScore": 60,
+      "response": "Date: 21 August 2026\n\nTo,\nUsha Rani Devi\n\nSubject: Complaint regarding non-delivery of pension for January-February 2026\n\nRespected Sir/Madam,\n\nWe have carefully examined the concerns raised in your communication regarding \"Complaint regarding non-delivery of pension for January-February 2026\" and regret the inconvenience caused.\nYour complaint has been registered with our office and assigned for immediate review. A detailed action plan addressing each point raised will be furnished to you within seven working days. Corrective measures will be taken wherever warranted.\n\nYours faithfully,\n\n(Signature)\n\n— Forged on-device by ODA · mirrors the input's structure, register and references",
       "rEngine": "adaptive",
       "responseOk": true,
-      "ms": 21
-    },
-    {
-      "name": "Extract-Out_VV-Details_Ravindra-Yadav_RNJ-12-1011",
-      "rel": "samples/Extract-Out_VV-Details_Ravindra-Yadav_RNJ-12-1011.txt",
-      "format": "txt",
-      "chars": 513,
-      "script": "English",
-      "translation": "सीपीएफ/118/विविध/आरएनजे-16/एक्सट्रैक्ट-आउट/आर-I/एएसएन/                     दिनांक:23-03-2026\n\nसेवा में,\nक्षेत्रीय आयुक्त,\nसीएमपीएफ, सिंगरौली\nपो-जयंत, जिला-सिंगरौली- 486890\nमध्य प्रदेश\n\nविषय:- \"वीवी\" विवरण के उद्धरण (एक्सट्रैक्ट) की आपूर्ति।\nसंदर्भ:- आपके कार्यालय का पत्र संख्या सीपीएफ/16/सिंग/13/25 दिनांक 26/03/2026\n\nमहोदय,\n\nउपरोक्त विषय एवं संदर्भ के आलोक में, श्री रविंद्र यादव, सीएमपीएफ खाता संख्या- आरएनजे/12/1011 के संबंध में संलग्न उद्धरण (एक्सट्रैक्ट) आपके अवलोकनार्थ प्रेषित है।\n\nभवदीय,\n(अजय कुमार सिंह)\nक्षेत्रीय आयुक्त - I\nसंलग्न- उपरोक्तानुसार",
-      "tEngine": "adaptive",
-      "complete": true,
-      "rating": "reference",
-      "ratingNote": "Reference-standard translation — CMPFO letter family (L.C. / Extract) matched; official phrasing, file numbers, account codes and member names in Devanagari.",
-      "ratingScore": 100,
-      "response": "Date: 18 August 2026\n\nTo,\nThe Regional Commissioner - I\n\nSubject: Supply of Extract (VV Details).\nRef: Your office letter No. CPF/16/Sing/13/25\nYour communication dated: 23-03-2026\n\nRespected Sir/Madam,\n\nWe acknowledge receipt of your communication on the subject \"Supply of Extract (VV Details)\". The matter has been taken on record and is receiving our attention.\nThe necessary action is being initiated, and you will be apprised of the outcome in due course. Please quote the reference noted above in all future correspondence.\n\nYours faithfully,\n\n(Signature)\n\n— Forged on-device by ODA · mirrors the input's structure, register and references",
-      "rEngine": "adaptive",
-      "responseOk": true,
-      "ms": 3
+      "ms": 14
     },
     {
       "name": "L.C.-Out_Ledger-Cards_CMPFO-RNJ-21-14",
@@ -69,24 +70,24 @@
       "response": "Date: 21 August 2026\n\nTo,\nThe Regional Commissioner - I\n\nSubject: Inter Regional Transfer of Ledger Card.\nRef: CPF/59/L.C.- Req./BKR-32/R-III/ASN/41\nYour communication dated: 09-07-2026\n\nRespected Sir/Madam,\n\nThis is to acknowledge receipt of your communication on the subject \"Inter Regional Transfer of Ledger Card\". The contents have been noted and the necessary action is being initiated at the earliest.\nThe Ledger Cards of the under-mentioned members forwarded with the above letter have been received: Shri Tonmoy Bhattacharjee (RNJ/21/1964), Shri Hirok Sarkar (NGP/64/79). The postings have been noted and will be updated accordingly.\nYou will be kept informed of the progress. Please address further correspondence on this matter through the reference noted above.\n\nSL. No | Name of the Member | CMPF A/C No- | Name of the colliery where the member had earlier worked in | Name of the colliery where the member is currently working in | No. of LC\n1 | Shri Tonmoy Bhattacharjee | RNJ/21/1964 | Khandra Coll., Bankola Area (From 20.04.2015 to 05.06.2025) Bankola Area Office (From 06.06.2025 to 31.08.2025) | ECL HQ. ECL | 1\n2 | Shri Hirok Sarkar | NGP/64/79 | Bankola AHQ, Bankola ECL (From 02.08.2021 to 18.08.2024) | ECL HQ. ECL | 1\n\nYours faithfully,\n\n(Signature)\n\n— Forged on-device by ODA · mirrors the input's structure, register and references",
       "rEngine": "adaptive",
       "responseOk": true,
-      "ms": 10
+      "ms": 14
     },
     {
-      "name": "University-Notice_Kalinga-University_KU-ADMIN-2026-412",
-      "rel": "University-Notice_Kalinga-University_KU-ADMIN-2026-412.txt",
+      "name": "Extract-Out_VV-Details_Ravindra-Yadav_RNJ-12-1011",
+      "rel": "samples/Extract-Out_VV-Details_Ravindra-Yadav_RNJ-12-1011.txt",
       "format": "txt",
-      "chars": 1148,
+      "chars": 513,
       "script": "English",
-      "translation": "संख्या कु/अदमिन/2026/412\nकलिंगा विश्वविद्यालय\nAdministrative Office\nBhubaneswar, Odisha 751024\nदिनांक:10 अगस्त 2026\n\nसेवा में,\nरजिस्ट्रार,\nराज्य प्रौद्योगिकी विश्वविद्यालय,\nकटक, ओडिशा 753001\n\nविषय:- अधिसूचना — शैक्षणिक सत्र 2025-26 हेतु वार्षिक परीक्षा कार्यक्रम\n\nमहोदय,\n\nअधिसूचना संख्या कु/एक्षम/2026/88 के अंतर्गत अधिसूचित परीक्षा कैलेंडर की निरंतरता में, प्रथम एवं द्वितीय वर्ष के सभी छात्रों को सूचित किया जाता है कि शैक्षणिक सत्र 2025-26 की वार्षिक परीक्षाएँ 01 अक्टूबर 2026 को पूर्वाह्न सत्र में प्रारंभ होंगी।\n\nपरीक्षा कार्यक्रम, प्रवेश पत्र वितरण तथा प्रश्नपत्रों का पाठ्यक्रम संबंधित विभागाध्यक्षों द्वारा समय पर सूचित किया जाएगा।\nछात्रों को निर्देशित किया जाता है कि वे परीक्षा शुल्क रु. 1200/- परीक्षा अनुभाग में 15 सितंबर 2026 को या उससे पूर्व जमा करें। निर्धारित अवधि के भीतर शुल्क जमा न करने वाले छात्रों को परीक्षाओं में उपस्थित होने की अनुमति नहीं दी जाएगी।\n\nकिसी छात्र के नामांकन विवरण में किसी भी विसंगति को तुरंत परीक्षा अनुभाग के संज्ञान में लाया जा सकता है।\n\nभवदीय,\n(डॉ. सुजाता मिश्रा)\nपरीक्षा नियंत्रक",
+      "translation": "सीपीएफ/118/विविध/आरएनजे-16/एक्सट्रैक्ट-आउट/आर-I/एएसएन/ दिनांक:23-03-2026\n\nसेवा में,\nक्षेत्रीय आयुक्त,\nसीएमपीएफ, सिंगरौली\nपो-जयंत, जिला-सिंगरौली- 486890\nमध्य प्रदेश\n\nविषय:- \"वीवी\" विवरण के उद्धरण (एक्सट्रैक्ट) की आपूर्ति।\nसंदर्भ:- आपके कार्यालय का पत्र संख्या सीपीएफ/16/सिंग/13/25 दिनांक 26/03/2026\n\nमहोदय,\n\nउपरोक्त विषय एवं संदर्भ के आलोक में, श्री रविंद्र यादव, सीएमपीएफ खाता संख्या- आरएनजे/12/1011 के संबंध में संलग्न उद्धरण (एक्सट्रैक्ट) आपके अवलोकनार्थ प्रेषित है।\n\nभवदीय,\n(अजय कुमार सिंह)\nक्षेत्रीय आयुक्त - I\nसंलग्न- उपरोक्तानुसार",
       "tEngine": "adaptive",
       "complete": true,
-      "rating": "complete",
-      "ratingNote": "Complete letter-for-letter translation — no CMPFO reference family detected; structure preserved, every line translated.",
-      "ratingScore": 92,
-      "response": "Date: 18 August 2026\n\nTo,\nDr. Sujata Mishra\n\nSubject: Notice - Annual Examination Schedule for the Academic Session 2025-26\nRef: No. KU/ADMIN/2026/412\n\nRespected Sir/Madam,\n\nReceipt of the notification on \"Notice - Annual Examination Schedule for the Academic Session 2025-26\" is hereby acknowledged. The contents have been duly noted for compliance.\nAll concerned have been apprised of the instructions contained therein, and compliance reports will be submitted as required.\n\nYours faithfully,\n\n(Signature)\n\n— Forged on-device by ODA · mirrors the input's structure, register and references",
+      "rating": "reference",
+      "ratingNote": "Reference-standard translation — CMPFO letter family (L.C. / Extract) matched; official phrasing, file numbers, account codes and member names in Devanagari.",
+      "ratingScore": 100,
+      "response": "Date: 21 August 2026\n\nTo,\nThe Regional Commissioner - I\n\nSubject: Supply of Extract (VV Details).\nRef: Your office letter No. CPF/16/Sing/13/25\nYour communication dated: 23-03-2026\n\nRespected Sir/Madam,\n\nWe acknowledge receipt of your communication on the subject \"Supply of Extract (VV Details)\". The matter has been taken on record and is receiving our attention.\nThe necessary action is being initiated, and you will be apprised of the outcome in due course. Please quote the reference noted above in all future correspondence.\n\nYours faithfully,\n\n(Signature)\n\n— Forged on-device by ODA · mirrors the input's structure, register and references",
       "rEngine": "adaptive",
       "responseOk": true,
-      "ms": 19
+      "ms": 3
     }
   ]
 }
