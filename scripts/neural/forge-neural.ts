@@ -143,11 +143,15 @@ async function neuralComplete(system: string, user: string): Promise<string> {
   const llama = await getLlama();
   const model = await llama.loadModel({ modelPath: MODEL_PATH, gpu: false });
   const context = await model.createContext({ contextSize: CTX });
+  // Qwen3 outputs `<think>` tokens by default. Disable thinking mode
+  // so the model goes straight to translation output.
+  const isQwen3 = /qwen.?3/i.test(MODEL_NAME);
+  const sys = isQwen3 ? `${system}\n/no_think` : system;
   _session = {
     prompt: (text: string, opts: Record<string, unknown>) =>
       new LlamaChatSession({
         contextSequence: context.getSequence(),
-        systemPrompt: system,
+        systemPrompt: sys,
       }).prompt(text, opts),
   };
   return (await _session.prompt(user, {
