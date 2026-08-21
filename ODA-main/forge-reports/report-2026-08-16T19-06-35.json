@@ -1,0 +1,73 @@
+{
+  "summary": {
+    "generatedAt": "2026-08-16T19:06:35.886Z",
+    "engine": "qwen2.5:7b-instruct-q4_K_M",
+    "mode": "dry-run (adaptive engine only)",
+    "documents": 4,
+    "adaptivePass": 4,
+    "neural": null,
+    "neuralErrors": 0
+  },
+  "rows": [
+    {
+      "document": "LC-Out_Transfer-Order_Bhaskar-Sinha_RNJ-31-1512.txt",
+      "adaptive": {
+        "ok": true,
+        "checks": {
+          "length": 635,
+          "subject": true,
+          "reference": true,
+          "date": true,
+          "salutation": true,
+          "signature": true
+        }
+      },
+      "neural": null
+    },
+    {
+      "document": "Complaint_Non-Delivery-Pension_P-Wing-Digilocker.txt",
+      "adaptive": {
+        "ok": true,
+        "checks": {
+          "length": 691,
+          "subject": true,
+          "reference": true,
+          "date": true,
+          "salutation": true,
+          "signature": true
+        }
+      },
+      "neural": null
+    },
+    {
+      "document": "L.C.-Out_Ledger-Cards_CMPFO-RNJ-21-14.txt",
+      "adaptive": {
+        "ok": true,
+        "checks": {
+          "length": 1356,
+          "subject": true,
+          "reference": true,
+          "date": true,
+          "salutation": true,
+          "signature": true
+        }
+      },
+      "neural": null
+    },
+    {
+      "document": "Extract-Out_VV-Details_Ravindra-Yadav_RNJ-12-1011.txt",
+      "adaptive": {
+        "ok": true,
+        "checks": {
+          "length": 646,
+          "subject": true,
+          "reference": true,
+          "date": true,
+          "salutation": true,
+          "signature": true
+        }
+      },
+      "neural": null
+    }
+  ]
+}

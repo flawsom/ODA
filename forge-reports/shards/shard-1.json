@@ -1,0 +1,42 @@
+{
+  "shard": 1,
+  "total": 4,
+  "model": "qwen3:4b",
+  "language": "Hindi",
+  "docs": [
+    {
+      "name": "University-Notice_Kalinga-University_KU-ADMIN-2026-412",
+      "rel": "University-Notice_Kalinga-University_KU-ADMIN-2026-412.txt",
+      "format": "txt",
+      "chars": 1148,
+      "script": "English",
+      "translation": "संख्या कु/अदमिन/2026/412\nकलिंगा विश्वविद्यालय\nAdministrative Office\nBhubaneswar, Odisha 751024\nदिनांक:10 अगस्त 2026\n\nसेवा में,\nरजिस्ट्रार,\nराज्य प्रौद्योगिकी विश्वविद्यालय,\nकटक, ओडिशा 753001\n\nविषय:- अधिसूचना — शैक्षणिक सत्र 2025-26 हेतु वार्षिक परीक्षा कार्यक्रम\n\nमहोदय,\n\nअधिसूचना संख्या कु/एक्षम/2026/88 के अंतर्गत अधिसूचित परीक्षा कैलेंडर की निरंतरता में, प्रथम एवं द्वितीय वर्ष के सभी छात्रों को सूचित किया जाता है कि शैक्षणिक सत्र 2025-26 की वार्षिक परीक्षाएँ 01 अक्टूबर 2026 को पूर्वाह्न सत्र में प्रारंभ होंगी।\n\nपरीक्षा कार्यक्रम, प्रवेश पत्र वितरण तथा प्रश्नपत्रों का पाठ्यक्रम संबंधित विभागाध्यक्षों द्वारा समय पर सूचित किया जाएगा।\nछात्रों को निर्देशित किया जाता है कि वे परीक्षा शुल्क रु. 1200/- परीक्षा अनुभाग में 15 सितंबर 2026 को या उससे पूर्व जमा करें। निर्धारित अवधि के भीतर शुल्क जमा न करने वाले छात्रों को परीक्षाओं में उपस्थित होने की अनुमति नहीं दी जाएगी।\n\nकिसी छात्र के नामांकन विवरण में किसी भी विसंगति को तुरंत परीक्षा अनुभाग के संज्ञान में लाया जा सकता है।\n\nभवदीय,\n(डॉ. सुजाता मिश्रा)\nपरीक्षा नियंत्रक",
+      "tEngine": "adaptive",
+      "complete": true,
+      "rating": "complete",
+      "ratingNote": "Complete letter-for-letter translation — no CMPFO reference family detected; structure preserved, every line translated.",
+      "ratingScore": 92,
+      "response": "Date: 18 August 2026\n\nTo,\nDr. Sujata Mishra\n\nSubject: Notice - Annual Examination Schedule for the Academic Session 2025-26\nRef: No. KU/ADMIN/2026/412\n\nRespected Sir/Madam,\n\nReceipt of the notification on \"Notice - Annual Examination Schedule for the Academic Session 2025-26\" is hereby acknowledged. The contents have been duly noted for compliance.\nAll concerned have been apprised of the instructions contained therein, and compliance reports will be submitted as required.\n\nYours faithfully,\n\n(Signature)\n\n— Forged on-device by ODA · mirrors the input's structure, register and references",
+      "rEngine": "adaptive",
+      "responseOk": true,
+      "ms": 19
+    },
+    {
+      "name": "Extract-Out_VV-Details_Ravindra-Yadav_RNJ-12-1011",
+      "rel": "samples/Extract-Out_VV-Details_Ravindra-Yadav_RNJ-12-1011.txt",
+      "format": "txt",
+      "chars": 513,
+      "script": "English",
+      "translation": "सीपीएफ/118/विविध/आरएनजे-16/एक्सट्रैक्ट-आउट/आर-I/एएसएन/                     दिनांक:23-03-2026\n\nसेवा में,\nक्षेत्रीय आयुक्त,\nसीएमपीएफ, सिंगरौली\nपो-जयंत, जिला-सिंगरौली- 486890\nमध्य प्रदेश\n\nविषय:- \"वीवी\" विवरण के उद्धरण (एक्सट्रैक्ट) की आपूर्ति।\nसंदर्भ:- आपके कार्यालय का पत्र संख्या सीपीएफ/16/सिंग/13/25 दिनांक 26/03/2026\n\nमहोदय,\n\nउपरोक्त विषय एवं संदर्भ के आलोक में, श्री रविंद्र यादव, सीएमपीएफ खाता संख्या- आरएनजे/12/1011 के संबंध में संलग्न उद्धरण (एक्सट्रैक्ट) आपके अवलोकनार्थ प्रेषित है।\n\nभवदीय,\n(अजय कुमार सिंह)\nक्षेत्रीय आयुक्त - I\nसंलग्न- उपरोक्तानुसार",
+      "tEngine": "adaptive",
+      "complete": true,
+      "rating": "reference",
+      "ratingNote": "Reference-standard translation — CMPFO letter family (L.C. / Extract) matched; official phrasing, file numbers, account codes and member names in Devanagari.",
+      "ratingScore": 100,
+      "response": "Date: 18 August 2026\n\nTo,\nThe Regional Commissioner - I\n\nSubject: Supply of Extract (VV Details).\nRef: Your office letter No. CPF/16/Sing/13/25\nYour communication dated: 23-03-2026\n\nRespected Sir/Madam,\n\nWe acknowledge receipt of your communication on the subject \"Supply of Extract (VV Details)\". The matter has been taken on record and is receiving our attention.\nThe necessary action is being initiated, and you will be apprised of the outcome in due course. Please quote the reference noted above in all future correspondence.\n\nYours faithfully,\n\n(Signature)\n\n— Forged on-device by ODA · mirrors the input's structure, register and references",
+      "rEngine": "adaptive",
+      "responseOk": true,
+      "ms": 3
+    }
+  ]
+}

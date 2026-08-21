@@ -1,0 +1,67 @@
+name: Deploy ODA to GitHub Pages
+
+# Builds the ODA app for static hosting (hash routing, base /ODA/, the baked
+# Convex URL) and deploys it to GitHub Pages — https://flawsom.github.io/ODA/.
+# The forge report site is included at /ODA/forge-reports/ when a forge run has
+# produced results.
+#
+# Requires: Settings → Pages → Source: "GitHub Actions" (already configured).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build the app for /ODA/ (hash routing, no server rewrites needed)
+        run: VITE_STATIC=true bunx vite build --base=/ODA/
+
+      - name: Include the forge report site (when a forge run has produced it)
+        run: |
+          if [ -f forge-reports/forge-results.json ]; then
+            node scripts/publish-report.mjs
+            cp -R forge-reports/site dist/forge-reports
+          fi
+        env:
+          FORGE_REPORTS_DIR: forge-reports
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

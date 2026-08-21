@@ -1,0 +1,9 @@
+.env.local
+node_modules
+dist
+
+# CI render-and-measure letter artifacts (see .github/workflows/render-measure.yml)
+.tmp-letters/
+
+# Downloaded GGUF models for the CI neural forge (cached by GitHub Actions)
+scripts/neural/models/

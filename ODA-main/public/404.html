@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>ODA</title>
+  <script>
+    // GitHub Pages serves this file for any unknown path. Rewrite to the app
+    // root (this directory) — hash routing handles the rest. Works for both
+    // project pages (/owner/repo/some/path) and custom domains.
+    (function () {
+      var base = location.pathname.replace(/\/[^/]*$/, "/");
+      location.replace(base + "#/");
+    })();
+  </script>
+</head>
+<body></body>
+</html>

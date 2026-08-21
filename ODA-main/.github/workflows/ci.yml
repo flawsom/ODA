@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  forge-smoke:
+    name: Forge smoke test (adaptive engine)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Forge the sample correspondence (dry run — no Ollama needed)
+        run: bun scripts/forge-bench.ts --dry-run --out /tmp/oda-forge
+
+  typecheck-and-build:
+    name: Typecheck + build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Typecheck
+        run: bunx tsc -b --noEmit
+
+      - name: Glossary en-key guard (no duplicate/conflicting sources)
+        run: bun scripts/t-glossary-keys.ts
+
+      - name: Verify the precision template engine (golden CMPF fixture)
+        run: bun scripts/verify-precision.ts
+
+      - name: End-to-end regression (CMPF refs, new golds, non-CMPF letters)
+        run: bun scripts/e2e-regression.ts
+
+      - name: Build
+        run: bun run build

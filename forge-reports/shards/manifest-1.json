@@ -1,0 +1,844 @@
+{
+  "files": {
+    "Appointment-Order_Rajesh-Mehra_DEPT-42-2026.txt": {
+      "hash": "a55b62f09fb544ea",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "complete"
+    },
+    "samples/LC-Out_Transfer-Order_Bhaskar-Sinha_RNJ-31-1512.txt": {
+      "hash": "cb57546a4700b598",
+      "engine": "neural:qwen3:4b",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "complete"
+    },
+    "samples/L.C.-Out_Ledger-Cards_CMPFO-RNJ-21-14.txt": {
+      "hash": "95c371aa0320dfa3",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "University-Notice_Kalinga-University_KU-ADMIN-2026-412.txt": {
+      "hash": "24e98a6f6cc0a000",
+      "engine": "neural:qwen3:4b",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "complete"
+    },
+    "samples/Complaint_Non-Delivery-Pension_P-Wing-Digilocker.txt": {
+      "hash": "1f893983f5798ac8",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "complete"
+    },
+    "samples/Extract-Out_VV-Details_Ravindra-Yadav_RNJ-12-1011.txt": {
+      "hash": "763444d5bff26fb0",
+      "engine": "neural:qwen3:4b",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "0-SHRI RAM LAL LOHAR (JABALPUR) EXTRACT.docx": {
+      "hash": "d2161d6d473a9a3a",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "1-AVTAR SINGH ( Ranchi-1 ).docx": {
+      "hash": "8096ff779777738b",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "10-SANJAY KU. BEHERA.docx": {
+      "hash": "53bf0ce38ab4643c",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "100-SHRI SUMAN SARKAR (MARGHERITA) - (L.C.-OUT).docx": {
+      "hash": "b5219253a4a81556",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "101-SHR GYANENDRA KUMAR - EXTRACT (DEOGHAR).docx": {
+      "hash": "aba531f69f3ce034",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "103-SUMAN DAS (BILASPUR-SECL) L.C. REQ..docx": {
+      "hash": "4fc17d5037859761",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "104-BISHNU DEO SINGH - EXTRACT (DHANBAD-D-1).docx": {
+      "hash": "62b599b95e83f167",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "105-MILAN KISHORE BERA (LC Requisition) - TALCHER.docx": {
+      "hash": "e881eea05a885343",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "107-SHRI SHUBHANKAR DE MALIK- EXTRACT (BILASPUR).docx": {
+      "hash": "6ffa7a37e8ad57ac",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "108-SHRI RAJIV KUMAR (SINGRAULI) - (L.C.-OUT).docx": {
+      "hash": "83689caccc8c92e9",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "109-MD ZAKIR HUSSAIN ANSARI (DHANBAD-II) - (L.C.-REQ & EXTRACT).docx": {
+      "hash": "54ed3d7abf72c0d2",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "11-MAHAMOOD MIYA (Extract).docx": {
+      "hash": "42358650e4583504",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "110-BIKSH KR. SINGH (BILASPUR)L.C. OUT.docx": {
+      "hash": "12dfbcfb19817a84",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "110-SHRI BIKSH KUMAR SINGH, DURGESH KUMAR TIWARI (BILASPUR) - (L.C.-OUT).docx": {
+      "hash": "e714d113817f6548",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "112-SHRI RAMESH CHANDRA MOHAPATRA (BILASPUR) - (L.C.-OUT).docx": {
+      "hash": "156a72f6b3396964",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "113-ARUN KUMAR-L.C. OUT (DEOGHAR).docx": {
+      "hash": "6f0a5468c565bca9",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "114-Smt. DEWANTI PANDEY (SINGRAULI)EXTRACT.docx": {
+      "hash": "3ae7ff20f285109b",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "115-SHRI SANTOSH ROY (DEOGHAR)EXTRACT.docx": {
+      "hash": "4152ed8da1c51393",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "116-PARAS NATH SINGH-L.C. OUT (SINGRAULI).docx": {
+      "hash": "3bff00a78a9f35e2",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "117-RAJESH BOURI (BILASPUR - SECL)L.C. Requisition .docx": {
+      "hash": "08c792f25eba2f60",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "117-SHRI KOVVURI VEERENDRA REDDY-L.C. OUT (NAGPUR).docx": {
+      "hash": "0d8d737c9a231a5a",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "119-SHRI NANDAN KUMAR RAJAK (NAGPUR - WCL) - (L.C.-Requisition).docx": {
+      "hash": "299f6d983bdeba33",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "12 - Manoj Kumar Mandal.docx": {
+      "hash": "79a7a059afe26518",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "120-SHRI PRASANTA KUMAR ROUTRAY (RANCHI -(I&II)) - (L.C.-Requisition).docx": {
+      "hash": "7c206c653a7fc9fc",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "120-SHRI PRASANTA KUMAR ROUTRAY (RANCHI -I&II) - (L.C.-Requisition).docx": {
+      "hash": "31f87e4a1dab24ba",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "120-SHRI PRASANTA KUMAR ROUTRAY (RANCHI-I &II-CCL) - (L.C.-Requisition).docx": {
+      "hash": "45635a6910cba7b4",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "120-SHRI PRASANTA KUMAR ROUTRAY (SAMBALPUR-SBP) - (L.C.-Requisition).docx": {
+      "hash": "39908dc9a6af1e45",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "122-SHRI UPENDRA RAI - EXTRACT (BILASPUR).docx": {
+      "hash": "b5ebbec73a5b7c77",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "13 - Daya Ram Meghwal.docx": {
+      "hash": "ba3ce2bf8860eaac",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "14 - Ram Chandra Prasad Yadav ( Ranchi-1 )OK.docx": {
+      "hash": "e089ad2ab01772a8",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "15 - Ram Chandra Prasad Yadav ( Ranchi-2 )OK - Copy.docx": {
+      "hash": "e089ad2ab01772a8",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "16-AJAI KUMAR MEHTA (Extract) -.docx": {
+      "hash": "8debcb612184d14a",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "17-MOHIT KUMAR CHANDEL S.B.P.)EX...docx": {
+      "hash": "ac5f923033b5e394",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "18 - AVTAR SINGH ( Ranchi-2 ).docx": {
+      "hash": "f4494496f29bece5",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "19 - AVTAR SINGH ( Ranchi-1 ).docx": {
+      "hash": "5aa7524873813326",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "2-SUNIL KUMAR RANA - (L.C.-OUT) Email.docx": {
+      "hash": "a3232544376ae2ef",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "20-SUNIL KUMAR RANA - (L.C.-OUT)Email.docx": {
+      "hash": "f3c9f8709567bea2",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "21-ACHINTYA LAL YADAV (RANCHI-II) Extract.docx": {
+      "hash": "36b9b5dc358e7ad4",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "22-GANESH TUKARAM DIWATE (NOT AVAILABLE L.C).docx": {
+      "hash": "10067d7a280c63ca",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "23-MUKUL BALONKAR- Extract (NAGPUR)OK.docx": {
+      "hash": "44729759973f125d",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "24-AJAY KUMAR -(L.C.-OUT) - (DELHI)OK.docx": {
+      "hash": "df491f2dd51293af",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "25-JITENDRA GOPAL MISHRA -(L.C.-OUT) - (NAGPUR)OK.docx": {
+      "hash": "16391b5ba1f28de6",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "26-AJAY KUMAR -(L.C.-OUT) - (DELHI).docx": {
+      "hash": "df491f2dd51293af",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "27-C SRIKANTH - EXTRACT (NAGPUR).docx": {
+      "hash": "b56443068be919fd",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "28-DILIP LC IN-OUT 1.docx": {
+      "hash": "6d1d5984063282ea",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "29-DILIP LC IN-OUT.docx": {
+      "hash": "51654f383c0afeb5",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "3-GANESH LC IN-OUT 1.docx": {
+      "hash": "a78208359d608ef9",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "31-DR. SOHEL TAZDAR-(BILASPUR) - (L.C.-REQ).docx": {
+      "hash": "68581c1e93fabadf",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "33-FILE (OFFICE NOTE).docx": {
+      "hash": "183ea341db211c05",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "complete"
+    },
+    "34-FORMAT - (L.C.-OUT).docx": {
+      "hash": "327813b397b2fcf0",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "35-FORMAT - (L.C.-REQ).docx": {
+      "hash": "8423fc2cabc57447",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "36-FORMAT - Extract.docx": {
+      "hash": "a4df4ef76ea720f9",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "38-Inter Regional Transfer of Ledger Card, DA, PS -3 & 4.docx": {
+      "hash": "54bbd68dbe4221ac",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "39-JITENDRA GOPAL MISHRA -(L.C.-OUT) - (NAGPUR).docx": {
+      "hash": "16391b5ba1f28de6",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "4-FORMAT - (L.C.-OUT).docx": {
+      "hash": "a6d437865e90573c",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "40-LATE DEB KUMAR ROY (SING)12-08-2025 -.docx": {
+      "hash": "cf0138a463ef3de9",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "41-MALAY CHANDAN CHANDRA.docx": {
+      "hash": "6b3103b4ff9ea615",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "42-MD. MUSTAQUEEM KHAN (NAGPUR-L.C.-REQ).docx": {
+      "hash": "d79d4ede535811b2",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "44-MUKUL BALONKAR- Extract (NAGPUR).docx": {
+      "hash": "44729759973f125d",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "45-New Microsoft Word Document.docx": {
+      "hash": "9420e83e225250a7",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "46-PRABHAT RANJAN JHA (DHANBAD-II)12-08-2025.docx": {
+      "hash": "565c7a321aa8d8fd",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "47-RAJESH-VIMLESH (SING)12-08-2025 -.docx": {
+      "hash": "b01cf226b078c7d4",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "48-SALEK RAJBHAR- EXTRACT (SINGRAULI).docx": {
+      "hash": "042f452d0e9a2287",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "49-SHRI JITENDRA NAHAK (SAMBALPUR) - (L.C.-OUT).docx": {
+      "hash": "ea8541aeb02d4412",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "5-FORMAT - Extract.docx": {
+      "hash": "a4df4ef76ea720f9",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "50-SHRI MAHAMOOD MIYA-(TALCHER)12-08-2025.docx": {
+      "hash": "c06d33be1e0fd578",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "51-SHRI RAJKUMAR BANJARO (BILASPUR) - (L.C.-OUT).docx": {
+      "hash": "79d1c1369a78dda1",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "52-SHRI SANTOSH KUMAR SAW (TALCHER) - (L.C.-REQ).docx": {
+      "hash": "5dbb03a086cdedf3",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "53-SOMENATH NANDY.docx": {
+      "hash": "38a3fed99bef4760",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "54-SRI B. B. SINGH (NAGPUR-L.C.-REQ).docx": {
+      "hash": "aec0a05d339d4def",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "55-SHRI BALENDRA KUMAR SHUKLA - EXTRACT (SINGRAULI) .docx": {
+      "hash": "99da365954a0416b",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "55-SRI C. SRIKANTH (NAG)12-08-2025.docx": {
+      "hash": "9a245e67f00c4649",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "56-SRI SUNNY KUMAR-(DHANBAD) - (L.C.-REQ).docx": {
+      "hash": "fbaba45f699f1a53",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "57-SHRI ANIL KUMAR (SINGRAULI) EXTRACT .docx": {
+      "hash": "8344f45cb4fa70ec",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "57-SUBRATA KUMAR MONDAL (DHANBAD-I) - (L.C.-OUT).docx": {
+      "hash": "a9e0177c7332c19f",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "58-Supply of Extract of VV statement - Copy.docx": {
+      "hash": "b9abd775124bb357",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "59-Supply of Extract of VV statement.docx": {
+      "hash": "c6fcf49564f13d1b",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "6 - Manoj Kumar Mandal - Copy.docx": {
+      "hash": "6ff2df617e0b5306",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "60-IDRISH MIA - EXTRACT (SINGRAULI).docx": {
+      "hash": "c799c248c398ff7d",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "60-SURJIT KUMAR GOSWAMI-(NAGPUR)12-08-2025 -.docx": {
+      "hash": "d0083fe28422f26d",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "61-VIPIN PRAJAPATI - L.C.-OUT-(NOT AVAILABLE)R-I.docx": {
+      "hash": "957cc9d14eb86113",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "62-SHRI MANOJ KUMAR (SINGRAULI) - (L.C.-OUT).docx": {
+      "hash": "7e1a69c7085d9cea",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "63-SHRI RAJ KUMAR MEHETA (DHANBAD-II) - (L.C.-OUT).docx": {
+      "hash": "a91717772abc1eef",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "64-SHRI BANWARI LAL BHAKHAND (NAGPUR) - (L.C.-Requisition)Email.docx": {
+      "hash": "9de8b1bf8c65e4fe",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "65-SHRI SANTOSH KU. JENA (TALCHER) - (L.C.-OUT).docx": {
+      "hash": "3f97c7436d0b29e6",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "66-SHRI B.B.SINGH (CHINDWARA) - (L.C.-Requisition).docx": {
+      "hash": "ee3977bfe22663cd",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "67-SHRI SHIYARAM RAJAK (NAGPUR) - (L.C.-Requisition).docx": {
+      "hash": "a8929f3cefe74612",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "68-SHRI JITENDRA NAHAK (KRISHNA SINGH,EO-AO) - (L.C.-OUT).docx": {
+      "hash": "b09c79398020b04d",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "69-JAY PRAKASH SINGH - EXTRACT (SINGRAULI).docx": {
+      "hash": "64946d515925af3b",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "7-SRI UTTAM KUMAR KARMAKAR.docx": {
+      "hash": "ce9fecf62b94d666",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "70-RAZA AHMAD KHAN - EXTRACT (NAGPUR).docx": {
+      "hash": "9a1087aa10ec807e",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "71-Dr. sangeeta,Laxmikanta,Dinesh (SINGRAULI) - (Enciosed not attached).docx": {
+      "hash": "0041619f2af63d82",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "72 - Manoj Kumar Mandal.docx": {
+      "hash": "e73a7d6747be6198",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "73- SHRI AVINASH SHANKAR - PARAS NATH SINGH- (JABALPUR) - (L.C.-OUT).docx": {
+      "hash": "91c3389aac9ce5cd",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "73-BRAJESH KUMAR (RANCHI-I) - (L.C.-OUT).docx": {
+      "hash": "28aa422438bb4898",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "74-SHRI SOMESH DEVASHI (DHANBAD-I) - (L.C.-OUT).docx": {
+      "hash": "ce1e1d905ac80677",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "75-SHRI SUDIP DASGUPTA - EXTRACT (RANCHI).docx": {
+      "hash": "31785f14ee8c1859",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "76-SHIV LAL MISHRA - EXTRACT (SINGRAULI).docx": {
+      "hash": "bd2b9142b43ece29",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "77-SHRI Mahendra Pratap Singh- EXTRACT (SINGRAULI).docx": {
+      "hash": "0a0e50f3a194225a",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "78-LC Requisition -SHRI MADHUSUDAN MADHAV (JABALPUR).docx": {
+      "hash": "4693f0cbaeb85091",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "79-LC Requisition - SHRI MADHUSUDAN MADHAV (RANCHI-II).docx": {
+      "hash": "5c9be08e8d43eebb",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "8-BHASKAR KUMAR SINHA.docx": {
+      "hash": "00d582187da7567e",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "82-SHRI Mahendra Pratap Singh- EXTRACT (SINGRAULI).docx": {
+      "hash": "a74fc5096c86cbeb",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "89-SHRI MEGHNARAYAN RAM (RANCHI-II) - (L.C.-OUT).docx": {
+      "hash": "e14aa042600b371e",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "9-RAJENDRA PRASAD (Ok)L.C..docx": {
+      "hash": "09524e2860b8da51",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "90-BIRENDRA KUMAR SINGH - EXTRACT (SINGRAULI).docx": {
+      "hash": "efd4138637cd85f6",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "91-SHRI DEBASISH GUPTA-EXTRACT (DEOGHAR) NOT AVAILBLE.docx": {
+      "hash": "423984d2263b27cf",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "92-MR. BHASKAR PAL - L.C. REQ. (DHANBAD, D-I).docx": {
+      "hash": "89756f0c7927038d",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "92-MR. BHASKAR PAL - L.C. REQ. (NAGPUR) .docx": {
+      "hash": "b1c4fb850712066a",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "93-SHRI SAAKSHI PRAKASH CHACHERKAR (SAMBALPUR) - (L.C.-OUT) - .docx": {
+      "hash": "67cc99d54f15fa5c",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "94-SHRI RAMASANKAR PRASAD- EXTRACT (SINGRAULI) - .docx": {
+      "hash": "977a8eee0ce364cb",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "95-SHRI RAJESH RAM (SAMBALPUR) - (L.C.-OUT).docx": {
+      "hash": "c697beb7211b076f",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "96-SHRI RAMAWADH YADAV- EXTRACT (SINGRAULI).docx": {
+      "hash": "25c7329c3a7b68e0",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    },
+    "98-SHRI DEBDAS HAZARA (DHANBAD-II) - (L.C.-REQ.).docx": {
+      "hash": "95dbea91897dc739",
+      "engine": "adaptive",
+      "tEngine": "adaptive",
+      "rEngine": "adaptive",
+      "rating": "reference"
+    }
+  }
+}

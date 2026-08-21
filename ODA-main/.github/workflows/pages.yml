@@ -1,0 +1,74 @@
+name: Deploy ODA App to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    # App code or report changes both refresh the customer site.
+    paths:
+      - "src/**"
+      - "public/**"
+      - "index.html"
+      - "package.json"
+      - "bun.lock"
+      - "forge-reports/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build the app bundle
+    runs-on: ubuntu-latest
+    env:
+      # Static-host mode: hash routing + baked-in Convex URL. No secrets needed —
+      # the frontend runs free forever on GitHub Pages and talks to the free
+      # Convex backend directly.
+      VITE_STATIC: "true"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Typecheck
+        run: bunx tsc -b --noEmit
+
+      - name: Render the forge report site
+        run: bun scripts/publish-report.mjs --src forge-reports --out site
+
+      - name: Build the app (relative assets for GitHub Pages)
+        run: bunx vite build --base=./
+
+      - name: Fold the forge report into the deployed site
+        run: |
+          mkdir -p dist/reports
+          cp -r site/. dist/reports/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment: github-pages
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy
+        uses: actions/deploy-pages@v4

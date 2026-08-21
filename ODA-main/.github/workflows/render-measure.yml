@@ -1,0 +1,105 @@
+# Render & Measure — CMPF letter one-page verification
+#
+# Track B renders entirely client-side, so the browser can never measure
+# pages. This workflow closes that gap on free GitHub Actions compute: it
+# builds the light/medium/heavy fixture letters through the real precision
+# engine, converts them to PDF with headless LibreOffice, asserts the actual
+# page counts against the shrink-to-fit tier design, and uploads the PDFs so
+# the rendered letters can be visually inspected (letterhead, right-aligned
+# sign-off, table) without any local Office install.
+
+name: Render & Measure — CMPF one-page verification
+
+on:
+  push:
+    paths:
+      - "public/templates/**"
+      - "src/lib/oda/**"
+      - "scripts/**"
+      - ".github/workflows/render-measure.yml"
+  workflow_dispatch:
+
+jobs:
+  render-measure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Install LibreOffice, poppler-utils and Devanagari fonts
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libreoffice-writer poppler-utils fonts-deva fonts-noto-core
+
+      - name: Build fixture letters (chosen tiers + full fit-scan grid)
+        run: |
+          WRITE_LETTERS=1 bun scripts/smoke-precision.mts
+          bun scripts/fit-scan.mts
+
+      - name: Render letters to PDF (headless LibreOffice)
+        run: >
+          soffice --headless --norestore
+          -env:UserInstallation=file:///tmp/lo_profile
+          --convert-to pdf --outdir .tmp-letters .tmp-letters/*.docx
+
+      - name: Measure page counts and print the fit table
+        run: |
+          echo "Pages per rendered letter:"
+          for pdf in .tmp-letters/*.pdf; do
+            echo "  $(basename "$pdf" .pdf): $(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}') page(s)"
+          done
+
+      - name: Assert floor-tier honesty (heaviest letter still overflows)
+        run: |
+          set -euo pipefail
+          got=$(pdfinfo .tmp-letters/scan-heavy-8rows-8pt-tb900-lr900.pdf | awk '/^Pages:/ {print $2}')
+          echo "heavy floor tier -> $got page(s) (expected 2)"
+          [ "$got" = "2" ]
+
+      - name: Assert the calibrated tiers hold one page
+        # Calibrated against this workflow's own fit table (LibreOffice
+        # substitutes Mangal with a wider Devanagari font, so the gold letter
+        # needs 9pt and the 5-row stress case needs 8pt + 900-twip margins).
+        run: |
+          set -euo pipefail
+          assert_pages() {
+            local doc="$1" expect="$2"
+            local got
+            got=$(pdfinfo ".tmp-letters/$doc.pdf" | awk '/^Pages:/ {print $2}')
+            echo "$doc -> $got page(s) (expected $expect)"
+            [ "$got" = "$expect" ]
+          }
+          # Tier 1 (weight <= 40): the gold 2-row letter at 9pt / 1" margins.
+          assert_pages scan-light-2rows-9pt-tb1440-lr1440 1
+          # Tier 2 (weight <= 100): 5-row x 2-stint stress case at 8pt / tb900.
+          assert_pages scan-medium-5rows-8pt-tb900-lr1440 1
+          # Floor tier: the 8-row x 3-stint worst case stays at 2 pages even
+          # at 8pt / 900 twips — the app's overflow notice fires instead of
+          # silently shipping an overflowing letter.
+          assert_pages scan-heavy-8rows-8pt-tb900-lr900 2
+          # Table-less Extract-out family (Track B, no table): 9pt / 1" margins.
+          assert_pages scan-extract-9pt-tb1440-lr1440 1
+          # Real Nayak extract letter at its chosen tier.
+          assert_pages scan-nayak-9pt-tb1440-lr1440 1
+          # Real Khadal Jena L.C.-out (1-row, 5-column table) at its chosen tier.
+          assert_pages scan-jena-9pt-tb1440-lr1440 1
+          # Track A generic renderer (CMPF-signalled, no family match): the
+          # shared letterhead + IR body must also hold one page at 9pt.
+          assert_pages letter-generic-track-a 1
+          # The Extract-out Track B letter (chosen tier) holds one page too.
+          assert_pages letter-extract-out 1
+
+      - name: Upload rendered letters for visual inspection
+        uses: actions/upload-artifact@v4
+        with:
+          name: cmpf-rendered-letters
+          path: .tmp-letters/*.pdf
+          if-no-files-found: error
+          # .tmp-letters is a hidden (dot) directory; v4 skips hidden paths
+          # unless asked to include them.
+          include-hidden-files: true

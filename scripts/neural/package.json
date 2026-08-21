@@ -1,0 +1,8 @@
+{
+  "name": "oda-neural-forge",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "node-llama-cpp": "^3.20.0"
+  }
+}

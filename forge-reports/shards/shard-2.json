@@ -1,0 +1,7 @@
+{
+  "shard": 2,
+  "total": 4,
+  "model": "qwen3:4b",
+  "language": "Hindi",
+  "docs": []
+}

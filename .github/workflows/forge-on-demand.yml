@@ -1,0 +1,67 @@
+name: ODA Forge On Demand
+
+# The drop-folder auto-forge: commit any document (TXT/MD/DOCX/DOC…) into
+# inbox/ and this workflow drafts the Hindi translation + formal response into
+# outbox/, committed back automatically. Already-forged, unchanged documents
+# are skipped via forge-reports/forge-manifest.json. Free compute, no keys.
+
+on:
+  push:
+    paths:
+      - "inbox/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: oda-forge-on-demand
+  cancel-in-progress: false
+
+jobs:
+  forge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install Ollama
+        run: |
+          curl -fsSL https://ollama.com/install.sh | sh
+          nohup ollama serve >/tmp/ollama.log 2>&1 &
+          for i in $(seq 1 60); do
+            curl -sf http://127.0.0.1:11434/api/version >/dev/null && break
+            sleep 1
+          done
+          curl -sf http://127.0.0.1:11434/api/version
+
+      - name: Pull model
+        run: ollama pull qwen3:4b
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Forge inbox
+        run: |
+          bun scripts/forge-bench.ts \
+            --neural \
+            --model qwen3:4b \
+            --docs inbox \
+            --out outbox \
+            --report-dir forge-reports \
+            --manifest forge-reports/forge-manifest.json \
+            --language Hindi
+
+      - name: Commit forged outputs
+        run: |
+          git config user.name "ODA Forge Bot"
+          git config user.email "actions@github.com"
+          git add outbox forge-reports
+          git diff --cached --quiet || git commit -m "forge: on-demand inbox → outbox"
+          git push

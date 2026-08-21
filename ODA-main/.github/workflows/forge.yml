@@ -1,0 +1,94 @@
+name: Master Forge (nightly neural run)
+
+on:
+  schedule:
+    # Every night at 02:00 UTC — free compute, no keys, no credits.
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Ollama model tag — the best open-weights model that fits the runner (larger runners are free for public repos)"
+        required: false
+        default: "qwen2.5:7b-instruct-q4_K_M"
+      commit-report:
+        description: "Commit the generated report back to the repo"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: forge
+  cancel-in-progress: false
+
+jobs:
+  forge:
+    name: Forge with ${{ inputs.model || 'qwen2.5:7b-instruct-q4_K_M' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Install Ollama
+        run: curl -fsSL https://ollama.com/install.sh | sh
+
+      - name: Start the Ollama server
+        run: |
+          nohup ollama serve >/tmp/ollama.log 2>&1 &
+          for i in $(seq 1 45); do
+            if curl -fsS http://localhost:11434/api/tags >/dev/null 2>&1; then
+              echo "Ollama ready"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "Ollama failed to start:"; tail -20 /tmp/ollama.log
+          exit 1
+
+      - name: Pull the neural model
+        run: |
+          for i in 1 2 3; do
+            if ollama pull "${{ inputs.model || 'qwen2.5:7b-instruct-q4_K_M' }}"; then
+              exit 0
+            fi
+            echo "pull attempt $i failed — retrying"; sleep 5
+          done
+          exit 1
+
+      - name: Run the forge (adaptive engine + neural model)
+        run: bun scripts/forge-bench.ts --model "${{ inputs.model || 'qwen2.5:7b-instruct-q4_K_M' }}"
+
+      - name: Upload the forge report
+        uses: actions/upload-artifact@v4
+        with:
+          name: forge-report
+          path: forge-reports/
+          if-no-files-found: error
+
+      - name: Commit the report back (nightly schedule, or on request)
+        if: ${{ github.event_name == 'schedule' || inputs.commit-report == 'true' }}
+        run: |
+          git config user.name "ODA Forge"
+          git config user.email "forge@users.noreply.github.com"
+          git add forge-reports
+          if git diff --cached --quiet; then
+            echo "No report changes to commit"
+            exit 0
+          fi
+          git commit -m "chore(forge): nightly neural forge report [skip ci]"
+          # main may have moved while we forged — rebase and retry.
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              echo "Report committed and pushed"
+              exit 0
+            fi
+            echo "push attempt $i conflicted — rebasing again"; sleep 5
+          done
+          exit 1

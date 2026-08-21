@@ -1,0 +1,82 @@
+name: Forge on Demand (inbox → outbox)
+
+on:
+  push:
+    branches: [main]
+    paths: ["inbox/**"]
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Ollama model tag — the best open-weights model that fits the runner (larger runners are free for public repos)"
+        required: false
+        default: "qwen2.5:7b-instruct-q4_K_M"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: forge-on-demand
+  cancel-in-progress: false
+
+jobs:
+  forge-files:
+    name: Forge new inbox documents
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Install Ollama
+        run: curl -fsSL https://ollama.com/install.sh | sh
+
+      - name: Start the Ollama server
+        run: |
+          nohup ollama serve >/tmp/ollama.log 2>&1 &
+          for i in $(seq 1 45); do
+            if curl -fsS http://localhost:11434/api/tags >/dev/null 2>&1; then
+              echo "Ollama ready"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "Ollama failed to start:"; tail -20 /tmp/ollama.log
+          exit 1
+
+      - name: Pull the neural model
+        run: |
+          for i in 1 2 3; do
+            if ollama pull "${{ inputs.model || 'qwen2.5:7b-instruct-q4_K_M' }}"; then
+              exit 0
+            fi
+            echo "pull attempt $i failed — retrying"; sleep 5
+          done
+          exit 1
+
+      - name: Forge every new document
+        run: bun scripts/forge-bench.ts --files inbox --outbox outbox --model "${{ inputs.model || 'qwen2.5:7b-instruct-q4_K_M' }}"
+
+      - name: Commit the forged drafts
+        run: |
+          git config user.name "ODA Forge"
+          git config user.email "forge@users.noreply.github.com"
+          git add outbox
+          if git diff --cached --quiet; then
+            echo "No new drafts to commit"
+            exit 0
+          fi
+          git commit -m "chore(forge): forged responses for inbox documents [skip ci]"
+          # main may have moved while we forged — rebase and retry.
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              echo "Drafts committed and pushed"
+              exit 0
+            fi
+            echo "push attempt $i conflicted — rebasing again"; sleep 5
+          done
+          exit 1

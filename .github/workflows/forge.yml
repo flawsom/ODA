@@ -1,0 +1,136 @@
+name: ODA Master Forge
+
+# The nightly "Master Forge": installs Ollama on free GitHub runners, serves
+# the best open-weights model that fits (Qwen3 4B q4 by default — multilingual,
+# including Hindi, and fast enough to finish inside the free-runner 6h limit),
+# and forges every document in inbox/ (plus the bundled samples) with the SAME
+# prompt contract and post-processing as the app. Zero API keys, free forever.
+#
+# The corpus is sharded across 4 parallel free runners; a merge job combines
+# the shards, writes forge-reports/FORGE_REPORT.md + forge-results.json, and
+# commits the drafts into outbox/.
+#
+# Trigger: every night 02:00 UTC + manual dispatch (Actions tab → Run workflow,
+# pick a larger model like qwen2.5:7b for a one-off deep forge).
+
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Ollama model tag — best that fits the free runner: qwen3:4b (default), qwen3:1.7b, qwen2.5:7b, qwen3:8b"
+        required: false
+        default: "qwen3:4b"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: oda-forge
+  cancel-in-progress: false
+
+jobs:
+  forge:
+    name: Forge shard ${{ matrix.shard }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install Ollama
+        run: |
+          curl -fsSL https://ollama.com/install.sh | sh
+          nohup ollama serve >/tmp/ollama.log 2>&1 &
+          for i in $(seq 1 60); do
+            curl -sf http://127.0.0.1:11434/api/version >/dev/null && break
+            sleep 1
+          done
+          curl -sf http://127.0.0.1:11434/api/version
+
+      - name: Pull model
+        run: ollama pull "$MODEL"
+        env:
+          MODEL: ${{ inputs.model || 'qwen3:4b' }}
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Forge shard ${{ matrix.shard }}
+        run: |
+          bun scripts/forge-bench.ts \
+            --neural \
+            --model "$MODEL" \
+            --docs inbox \
+            --out outbox \
+            --report-dir forge-reports \
+            --manifest forge-reports/forge-manifest.json \
+            --language Hindi \
+            --shard ${{ matrix.shard }} --shard-total 4
+        env:
+          MODEL: ${{ inputs.model || 'qwen3:4b' }}
+
+      - name: Export shard manifest (idempotency across nights)
+        run: cp forge-reports/forge-manifest.json forge-reports/shards/manifest-${{ matrix.shard }}.json
+
+      - name: Upload shard
+        uses: actions/upload-artifact@v4
+        with:
+          name: forge-shard-${{ matrix.shard }}
+          path: |
+            outbox/
+            forge-reports/shards/
+          if-no-files-found: ignore
+
+  merge:
+    name: Merge and commit
+    needs: forge
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Download shards
+        uses: actions/download-artifact@v4
+        with:
+          path: forge-artifacts
+          pattern: forge-shard-*
+          merge-multiple: true
+
+      - name: Combine shards into final output
+        run: |
+          rm -rf outbox
+          mkdir -p outbox
+          if [ -d forge-artifacts/outbox ]; then cp -R forge-artifacts/outbox/. outbox/; fi
+          mkdir -p forge-reports/shards
+          if [ -d forge-artifacts/forge-reports/shards ]; then cp -R forge-artifacts/forge-reports/shards/. forge-reports/shards/; fi
+          bun scripts/forge-bench.ts --merge --out outbox --report-dir forge-reports
+
+      - name: Publish report site (for Pages)
+        run: node scripts/publish-report.mjs
+        env:
+          FORGE_REPORTS_DIR: forge-reports
+
+      - name: Commit forged outputs
+        run: |
+          git config user.name "ODA Forge Bot"
+          git config user.email "actions@github.com"
+          git add outbox forge-reports
+          git diff --cached --quiet || git commit -m "forge: nightly master forge $(date -u +%Y-%m-%d)"
+          git push

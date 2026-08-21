@@ -1,0 +1,25 @@
+{
+  "shard": 3,
+  "total": 4,
+  "model": "qwen3:4b",
+  "language": "Hindi",
+  "docs": [
+    {
+      "name": "Complaint_Non-Delivery-Pension_P-Wing-Digilocker",
+      "rel": "samples/Complaint_Non-Delivery-Pension_P-Wing-Digilocker.txt",
+      "format": "txt",
+      "chars": 1125,
+      "script": "English",
+      "translation": "दिनांक:18 मार्च 2026\n\nसेवा में,\nआयुक्त,\nपेंशन एवं कल्याण विभाग\nपी-विंग, सिविल लाइन्स, नई दिल्ली\n\nविषय:- Complaint regarding non-delivery of pension for January-February 2026\n\nप्रिय महोदय/महोदया,\n\nमैं, श्रीमती उषा रानी देवी, पेंशनभोगी, पीपीओ संख्या PPO/D-77412, यह औपचारिक शिकायत दर्ज करती हूँ कि जनवरी एवं फरवरी 2026 माह का मेरा पेंशन भारतीय स्टेट बैंक में मेरे खाते (खाता संख्या 40213577890, आईएफएससी SBIN0001142) में जमा नहीं किया गया।\n\n05 जनवरी 2026 को डिजिलॉकर के माध्यम से जीवन प्रमाण पत्र प्रस्तुत करने तथा संदर्भ संख्या DL/2026/88453 की पावती प्राप्त करने के बावजूद, भुगतान जारी नहीं किया गया है।\nमैंने तीन बार पेंशन वितरण कार्यालय का दौरा किया है और हर बार हेल्पलाइन पर कॉल किया है; अब तक कोई समाधान नहीं मिला है।\n\nइस विलंब से मुझे और मेरे परिवार को गंभीर कठिनाई हुई है।\nमेरा अनुरोध है कि मामले की तुरंत जाँच की जाए और मेरी लंबित पेंशन नियमों के अनुसार ब्याज सहित शीघ्र अतिशीघ्र जमा की जाए।\n\nसंदर्भ के लिए मैंने पावती की एक प्रति और अपना पी.पी.ओ. संलग्न किया है।\n\nभवदीय,\n(उषा रानी देवी)\nपेंशनभोगी, पीपीओ/D-77412\nसंपर्क: 9876543210",
+      "tEngine": "adaptive",
+      "complete": true,
+      "rating": "complete",
+      "ratingNote": "Complete letter-for-letter translation — no CMPFO reference family detected; structure preserved, every line translated.",
+      "ratingScore": 92,
+      "response": "Date: 18 August 2026\n\nTo,\nUsha Rani Devi\n\nSubject: Complaint regarding non-delivery of pension for January-February 2026\n\nRespected Sir/Madam,\n\nWe have carefully examined the concerns raised in your communication regarding \"Complaint regarding non-delivery of pension for January-February 2026\" and regret the inconvenience caused.\nYour complaint has been registered with our office and assigned for immediate review. A detailed action plan addressing each point raised will be furnished to you within seven working days. Corrective measures will be taken wherever warranted.\n\nYours faithfully,\n\n(Signature)\n\n— Forged on-device by ODA · mirrors the input's structure, register and references",
+      "rEngine": "adaptive",
+      "responseOk": true,
+      "ms": 21
+    }
+  ]
+}

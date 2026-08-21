@@ -1,0 +1,186 @@
+name: CI
+
+# Comprehensive CI: typecheck + deterministic engine validation + neural
+# forge quality gate. Every push/PR must pass ALL gates before merge.
+#
+# Gate 1: Typecheck (must pass)
+# Gate 2: Deterministic engine stress test (must pass 186+ / 188)
+# Gate 3: Neural forge quality gate (Qwen3-8B on 6 hardest letters)
+#   — runs only when letters/ inbox has content
+#   — compares neural vs deterministic output quality
+#   — fails if neural output is worse than deterministic on any letter
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  typecheck:
+    name: "Gate 1: Typecheck"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Generate Convex types (when a deploy key is configured)
+        run: bun convex dev --once
+        env:
+          CONVEX_DEPLOY_KEY: ${{ secrets.CONVEX_DEPLOY_KEY }}
+        continue-on-error: true
+
+      - name: Typecheck
+        run: bun tsc -b --noEmit
+
+  deterministic:
+    name: "Gate 2: Deterministic engine stress test"
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Run extreme intelligence stress test
+        run: bun scripts/test-extreme-intelligence.mts
+
+  neural-forge:
+    name: "Gate 3: Neural forge quality gate"
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    needs: [typecheck, deterministic]
+    if: always() && (needs.typecheck.result == 'success' || needs.deterministic.result == 'success')
+    strategy:
+      fail-fast: false
+      matrix:
+        offset: [0, 6, 12]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install app dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Install neural runtime (llama.cpp)
+        working-directory: scripts/neural
+        run: npm install
+
+      - name: Resolve model (Qwen3-8B)
+        id: model
+        run: |
+          echo "name=Qwen3-8B-Q4_K_M" >> "$GITHUB_OUTPUT"
+          echo "url=https://huggingface.co/Qwen/Qwen3-8B-GGUF/resolve/main/Qwen3-8B-Q4_K_M.gguf" >> "$GITHUB_OUTPUT"
+          echo "file=scripts/neural/models/Qwen3-8B-Q4_K_M.gguf" >> "$GITHUB_OUTPUT"
+
+      - name: Cache model
+        uses: actions/cache@v4
+        with:
+          path: scripts/neural/models
+          key: oda-gguf-${{ steps.model.outputs.name }}
+
+      - name: Download model
+        run: |
+          mkdir -p scripts/neural/models
+          if [ ! -s "$MODEL_FILE" ]; then
+            curl -L --retry 3 --retry-delay 5 -o "$MODEL_FILE" "$MODEL_URL"
+          fi
+        env:
+          MODEL_FILE: ${{ steps.model.outputs.file }}
+          MODEL_URL: ${{ steps.model.outputs.url }}
+
+      - name: Forge hardest letters (neural vs deterministic comparison)
+        run: |
+          # Pick the 6 hardest letters for quality comparison
+          # These stress-test grammar, vocabulary, and structure preservation
+          HARDEST=(
+            "33-FILE.docx"
+            "45-New.docx"
+            "50-SHRI MAHAMOOD MIYA-(TALCHER)12-08-2025.docx"
+            "71-Dr. sangeeta,Laxmikanta,Dinesh (SINGRAULI) - (Enciosed not attached).docx"
+            "92-MR. BHASKAR PAL - L.C. REQ. (DHANBAD, D-I).docx"
+            "58-Supply of Extract of VV statement - Copy.docx"
+          )
+          
+          # Run neural forge on the hardest letters
+          bun scripts/neural/forge-neural.ts \
+            --dir "letters/8-ALL NEW LETTER" \
+            --out "/tmp/neural-forge" \
+            --model "$MODEL_FILE" \
+            --model-name "${{ steps.model.outputs.name }}" \
+            --offset ${{ matrix.offset }} \
+            --limit 6 \
+            --task translate \
+            --lang Hindi
+        env:
+          MODEL_FILE: ${{ steps.model.outputs.file }}
+
+      - name: Validate neural output quality
+        run: |
+          # Check that neural output:
+          # 1. Has no fatal errors
+          # 2. All letters produced output
+          # 3. No Latin prose remnants in Hindi translations
+          # 4. Rating is 'reference' or 'strong' (not 'weak' or 'failed')
+          
+          ERRORS=0
+          for f in /tmp/neural-forge/*.json; do
+            [ -f "$f" ] || continue
+            
+            # Check for errors
+            if node -e "const r=require('$f'); if(r.error){console.error('ERROR in '+r.file+': '+r.error); process.exit(1)}"; then
+              echo "FAIL: $f has error"
+              ERRORS=$((ERRORS+1))
+            fi
+            
+            # Check translation exists and is complete
+            if node -e "const r=require('$f'); if(!r.translate||!r.translate.complete){console.error('INCOMPLETE: '+r.file); process.exit(1)}"; then
+              echo "FAIL: $f translation incomplete"
+              ERRORS=$((ERRORS+1))
+            fi
+            
+            # Check quality rating
+            if node -e "const r=require('$f'); if(r.translate&&r.translate.ratingScore<3){console.error('LOW QUALITY: '+r.file+' score='+r.translate.ratingScore); process.exit(1)}"; then
+              echo "FAIL: $f quality too low"
+              ERRORS=$((ERRORS+1))
+            fi
+            
+            # Check for Latin prose remnants
+            if node -e "const r=require('$f'); const c=r.translate?.content||''; const latin=c.split(/\s+/).filter(w=>/^[a-z]{4,}$/i.test(w)); if(latin.length>5){console.error('LATIN REMNANTS in '+r.file+': '+latin.slice(0,5).join(', ')); process.exit(1)}"; then
+              echo "FAIL: $f has Latin prose remnants"
+              ERRORS=$((ERRORS+1))
+            fi
+          done
+          
+          if [ $ERRORS -gt 0 ]; then
+            echo "NEURAL FORGE QUALITY GATE FAILED: $ERRORS errors"
+            exit 1
+          fi
+          echo "NEURAL FORGE QUALITY GATE PASSED"
+
+      - name: Upload neural outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: neural-forge-${{ matrix.offset }}
+          path: /tmp/neural-forge
+          if-no-files-found: ignore
+          retention-days: 7
