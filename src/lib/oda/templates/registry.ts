@@ -94,7 +94,16 @@ const CMPF_ACCOUNT_RE = /CMPF\s+A\/?C\s+No|सीएमपीएफ खाता
  * + right-aligned sign-off + shrink-to-fit) instead of the plain structural
  * renderer. */
 export function hasCmpfSignals(rawText: string): boolean {
-  return ORG_RE.test(rawText);
+  // Require the full organization name ("Coal Mines Provident Fund"
+  // in Hindi or English), OR the CMPF acronym WITH the commissioner.
+  // A bare "CMPF" in a table header is not enough to trigger the
+  // reference-standard pass on non-CMPFO government letters that
+  // merely mention the CMPF acronym (e.g., transfer orders).
+  const hasFullOrg = /कोयला खान भविष्य निधि|coal\s+mines\s+provident\s+fund/i.test(rawText);
+  if (hasFullOrg) return true;
+  const hasAcronym = /सी\.?\s*एम\.?\s*पी\.?\s*एफ|c\.?\s*m\.?\s*p\.?\s*f/i.test(rawText);
+  const hasCommissioner = COMMISSIONER_RE.test(rawText);
+  return hasAcronym && hasCommissioner;
 }
 
 function orgScore(rawText: string): number {
