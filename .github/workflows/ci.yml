@@ -112,9 +112,9 @@ jobs:
       - name: Forge hardest letters (neural vs deterministic comparison)
         run: |
           # Run neural forge on hardest letters with Qwen3-0.6B
-          # Uses small context (2048) + single reused session to fit
-          # within 7 GB runner RAM.  Session is now created once and
-          # reused across all letters (fixes 'No sequences left' error).
+          # Uses ctx 4096 + single reused session (both created once
+          # at startup).  The session fix eliminated the per-call sequence
+          # allocation that caused OOM, so 4096 now fits in 7 GB runners.
           bun scripts/neural/forge-neural.ts \
             --dir "letters/8-ALL NEW LETTER" \
             --out "/tmp/neural-forge" \
@@ -124,7 +124,7 @@ jobs:
             --limit 6 \
             --task translate \
             --lang Hindi \
-            --ctx 2048 \
+            --ctx 4096 \
             --max-tokens 800
         env:
           MODEL_FILE: ${{ steps.model.outputs.file }}
