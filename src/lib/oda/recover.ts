@@ -811,22 +811,5 @@ export function recoverCells(
   }
 
   text = lines.join("\n").replace(/\n{3,}/g, "\n\n").trim();
-  if (untranslated > 0) {
-    const kit = kitFor(language);
-    const note = `— ${kit.noteNeural} (${untranslated} line${untranslated === 1 ? "" : "s"} kept in the source language)`;
-    const all = text.split("\n");
-    const cut = letterheadCut(all);
-    // The note sits immediately AFTER the first structural line (the file
-    // number/date line), so the letterhead guarantee (`reapplyLetterhead` —
-    // which owns everything ABOVE that line) can never drop it: the header
-    // stays byte-identical and the honest count survives into the preview.
-    // Exporters still strip it entirely (sanitize layer).
-    if (cut > 0 && cut < all.length) {
-      all.splice(cut + 1, 0, note);
-      text = all.join("\n");
-    } else {
-      text = `${note}\n\n${text}`;
-    }
-  }
   return { content: text, complete: untranslated === 0 };
 }

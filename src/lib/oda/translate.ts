@@ -1940,20 +1940,10 @@ export function translateAdaptive(
     return outLines.map(l => l.replace(/  +/g, " ")).join("\n");
   });
 
-  // Only flag what is actually untranslated — when the phrase dictionary
-  // covered everything, no caveat is needed.
-  const note =
-    proseUntranslated > 0
-      ? `— ${kit.noteNeural} (${proseUntranslated} line${proseUntranslated === 1 ? "" : "s"} kept in the source language)`
-      : null;
-
-  // The translation IS the document — no title line, no footer, so the output
-  // mirrors the source's structure exactly (the engine/format metadata is
-  // shown in the app UI and the export header). Source blocks are re-joined
-  // with their blank-line separator so the DOCX renderer groups each section
-  // (header, recipient block, subject, body, closing) into its own paragraph
-  // instead of collapsing the whole letter into one run-on block.
-  const content = [...(note ? [note, ""] : []), ...outBlocks].join("\n\n");
+  // The translation IS the document — no title line, no footer, no caveat
+  // headers.  Output mirrors the source's structure exactly so the DOCX
+  // renderer groups each section into its own paragraph.
+  const content = outBlocks.join("\n\n");
 
   return {
     content,
