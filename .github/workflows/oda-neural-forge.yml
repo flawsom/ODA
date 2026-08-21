@@ -2,9 +2,9 @@ name: ODA Neural Forge
 
 # Free, keyless neural forge: runs a real open-weight LLM (Qwen3 via
 # llama.cpp) on GitHub's free runners — no API key, no vendor. The model is
-# the absolute best that fits the 7 GB runner (Qwen3-8B Q4_K_M); pick the 4B
-# for ~2x speed. Every letter gets the same pipeline as the app: glossary
-# training memory, reference-standard pass, per-letter translator rating.
+# Qwen3-4B Q4_K_M (~2.5 GB) which fits comfortably in the 7 GB runner;
+# Qwen3-8B OOMs on free runners. Every letter gets the same pipeline as the
+# app: glossary training memory, reference-standard pass, per-letter translator rating.
 #
 # Trigger: manual (workflow_dispatch) or automatically when the letter inbox
 # changes. Outputs are committed back to letters/out/neural.
@@ -13,10 +13,10 @@ on:
   workflow_dispatch:
     inputs:
       model:
-        description: "GGUF model — 8b = best quality, 4b = ~2x faster"
+        description: "GGUF model — 4b = fits free runners, 8b = needs 16 GB+ runner"
         type: choice
-        default: "8b"
-        options: ["8b", "4b"]
+        default: "4b"
+        options: ["4b", "8b"]
       limit:
         description: "Letters per matrix batch (max ~12 on a 2-core runner)"
         type: number
@@ -43,7 +43,7 @@ jobs:
       matrix:
         offset: [0, 12, 24, 36, 48, 60]
     env:
-      MODEL_SIZE: ${{ inputs.model || '8b' }}
+      MODEL_SIZE: ${{ inputs.model || '4b' }}
       BATCH_LIMIT: ${{ inputs.limit || 12 }}
     steps:
       - uses: actions/checkout@v4
@@ -95,7 +95,9 @@ jobs:
           --model "$MODEL_FILE" \
           --model-name "${{ steps.model.outputs.name }}" \
           --offset ${{ matrix.offset }} \
-          --limit "$BATCH_LIMIT"
+          --limit "$BATCH_LIMIT" \
+          --ctx 4096 \
+          --max-tokens 800
         env:
           MODEL_FILE: ${{ steps.model.outputs.file }}
           BATCH_LIMIT: ${{ inputs.limit || 12 }}

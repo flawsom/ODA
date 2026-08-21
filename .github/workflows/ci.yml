@@ -5,10 +5,11 @@ name: CI
 #
 # Gate 1: Typecheck (must pass)
 # Gate 2: Deterministic engine stress test (must pass 186+ / 188)
-# Gate 3: Neural forge quality gate (Qwen3-8B on 6 hardest letters)
+# Gate 3: Neural forge quality gate (Qwen3-4B on 6 hardest letters)
 #   — runs only when letters/ inbox has content
 #   — compares neural vs deterministic output quality
 #   — fails if neural output is worse than deterministic on any letter
+#   — uses Qwen3-4B because 8B OOMs on GitHub's 7 GB free runners
 
 on:
   push:
@@ -85,12 +86,12 @@ jobs:
         working-directory: scripts/neural
         run: npm install
 
-      - name: Resolve model (Qwen3-8B)
+      - name: Resolve model (Qwen3-4B — fits 7 GB runner)
         id: model
         run: |
-          echo "name=Qwen3-8B-Q4_K_M" >> "$GITHUB_OUTPUT"
-          echo "url=https://huggingface.co/Qwen/Qwen3-8B-GGUF/resolve/main/Qwen3-8B-Q4_K_M.gguf" >> "$GITHUB_OUTPUT"
-          echo "file=scripts/neural/models/Qwen3-8B-Q4_K_M.gguf" >> "$GITHUB_OUTPUT"
+          echo "name=Qwen3-4B-Q4_K_M" >> "$GITHUB_OUTPUT"
+          echo "url=https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/main/Qwen3-4B-Q4_K_M.gguf" >> "$GITHUB_OUTPUT"
+          echo "file=scripts/neural/models/Qwen3-4B-Q4_K_M.gguf" >> "$GITHUB_OUTPUT"
 
       - name: Cache model
         uses: actions/cache@v4
@@ -110,18 +111,8 @@ jobs:
 
       - name: Forge hardest letters (neural vs deterministic comparison)
         run: |
-          # Pick the 6 hardest letters for quality comparison
-          # These stress-test grammar, vocabulary, and structure preservation
-          HARDEST=(
-            "33-FILE.docx"
-            "45-New.docx"
-            "50-SHRI MAHAMOOD MIYA-(TALCHER)12-08-2025.docx"
-            "71-Dr. sangeeta,Laxmikanta,Dinesh (SINGRAULI) - (Enciosed not attached).docx"
-            "92-MR. BHASKAR PAL - L.C. REQ. (DHANBAD, D-I).docx"
-            "58-Supply of Extract of VV statement - Copy.docx"
-          )
-          
-          # Run neural forge on the hardest letters
+          # Run neural forge on hardest letters with Qwen3-4B
+          # Uses small context (4096) to fit within 7 GB runner RAM
           bun scripts/neural/forge-neural.ts \
             --dir "letters/8-ALL NEW LETTER" \
             --out "/tmp/neural-forge" \
@@ -130,7 +121,9 @@ jobs:
             --offset ${{ matrix.offset }} \
             --limit 6 \
             --task translate \
-            --lang Hindi
+            --lang Hindi \
+            --ctx 4096 \
+            --max-tokens 800
         env:
           MODEL_FILE: ${{ steps.model.outputs.file }}
 
@@ -145,6 +138,8 @@ jobs:
           ERRORS=0
           for f in /tmp/neural-forge/*.json; do
             [ -f "$f" ] || continue
+            # Skip the summary results.json — only check per-letter files
+            [ "$(basename $f)" = "results.json" ] && continue
             
             # Check for errors
             if node -e "const r=require('$f'); if(r.error){console.error('ERROR in '+r.file+': '+r.error); process.exit(1)}"; then
