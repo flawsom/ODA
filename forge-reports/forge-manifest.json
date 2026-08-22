@@ -2,7 +2,7 @@
   "files": {
     "Appointment-Order_Rajesh-Mehra_DEPT-42-2026.txt": {
       "hash": "a55b62f09fb544ea",
-      "engine": "neural:qwen3:4b",
+      "engine": "adaptive",
       "tEngine": "adaptive",
       "rEngine": "adaptive",
       "rating": "complete"
@@ -16,31 +16,31 @@
     },
     "samples/L.C.-Out_Ledger-Cards_CMPFO-RNJ-21-14.txt": {
       "hash": "95c371aa0320dfa3",
-      "engine": "neural:qwen3:4b",
+      "engine": "adaptive",
       "tEngine": "adaptive",
       "rEngine": "adaptive",
       "rating": "reference"
     },
     "University-Notice_Kalinga-University_KU-ADMIN-2026-412.txt": {
       "hash": "24e98a6f6cc0a000",
-      "engine": "neural:qwen3:4b",
+      "engine": "adaptive",
       "tEngine": "adaptive",
       "rEngine": "adaptive",
       "rating": "complete"
     },
     "samples/Complaint_Non-Delivery-Pension_P-Wing-Digilocker.txt": {
       "hash": "1f893983f5798ac8",
-      "engine": "neural:qwen3:4b",
+      "engine": "adaptive",
       "tEngine": "adaptive",
       "rEngine": "adaptive",
-      "rating": "partial"
+      "rating": "complete"
     },
     "samples/Extract-Out_VV-Details_Ravindra-Yadav_RNJ-12-1011.txt": {
       "hash": "763444d5bff26fb0",
-      "engine": "neural:qwen3:4b",
+      "engine": "adaptive",
       "tEngine": "adaptive",
       "rEngine": "adaptive",
-      "rating": "reference"
+      "rating": "partial"
     },
     "0-SHRI RAM LAL LOHAR (JABALPUR) EXTRACT.docx": {
       "hash": "d2161d6d473a9a3a",
