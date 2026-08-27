@@ -9,7 +9,7 @@
     },
     "samples/LC-Out_Transfer-Order_Bhaskar-Sinha_RNJ-31-1512.txt": {
       "hash": "cb57546a4700b598",
-      "engine": "adaptive",
+      "engine": "neural:qwen3:4b",
       "tEngine": "adaptive",
       "rEngine": "adaptive",
       "rating": "complete"
@@ -33,7 +33,7 @@
       "engine": "neural:qwen3:4b",
       "tEngine": "adaptive",
       "rEngine": "adaptive",
-      "rating": "complete"
+      "rating": "partial"
     },
     "samples/Extract-Out_VV-Details_Ravindra-Yadav_RNJ-12-1011.txt": {
       "hash": "763444d5bff26fb0",
@@ -41,9 +41,7 @@
       "tEngine": "adaptive",
       "rEngine": "adaptive",
       "rating": "partial"
-    }
-  }
-},
+    },
     "0-SHRI RAM LAL LOHAR (JABALPUR) EXTRACT.docx": {
       "hash": "d2161d6d473a9a3a",
       "engine": "adaptive",
