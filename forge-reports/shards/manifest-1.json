@@ -2,7 +2,7 @@
   "files": {
     "Appointment-Order_Rajesh-Mehra_DEPT-42-2026.txt": {
       "hash": "a55b62f09fb544ea",
-      "engine": "adaptive",
+      "engine": "neural:qwen3:4b",
       "tEngine": "adaptive",
       "rEngine": "adaptive",
       "rating": "complete"
@@ -16,7 +16,7 @@
     },
     "samples/L.C.-Out_Ledger-Cards_CMPFO-RNJ-21-14.txt": {
       "hash": "95c371aa0320dfa3",
-      "engine": "adaptive",
+      "engine": "neural:qwen3:4b",
       "tEngine": "adaptive",
       "rEngine": "adaptive",
       "rating": "reference"
