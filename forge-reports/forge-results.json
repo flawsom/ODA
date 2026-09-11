@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T07:06:19.086Z",
+  "generatedAt": "2026-09-11T07:04:57.339Z",
   "engine": "adaptive",
   "model": "qwen3:4b",
   "docs": [
@@ -32,7 +32,7 @@
       "rating": "reference",
       "ratingNote": "Reference-standard translation — CMPFO letter family (L.C. / Extract) matched; official phrasing, file numbers, account codes and member names in Devanagari.",
       "ratingScore": 100,
-      "response": "Date: 06 September 2026\n\nTo,\nThe Regional Commissioner - I\n\nSubject: Supply of Extract (VV Details).\nRef: Your office letter No. CPF/16/Sing/13/25\nYour communication dated: 23-03-2026\n\nRespected Sir/Madam,\n\nWe acknowledge receipt of your communication on the subject \"Supply of Extract (VV Details)\". The matter has been taken on record and is receiving our attention.\nThe necessary action is being initiated, and you will be apprised of the outcome in due course. Please quote the reference noted above in all future correspondence.\n\nYours faithfully,\n\n(Signature)\n\n— Forged on-device by ODA · mirrors the input's structure, register and references",
+      "response": "Date: 11 September 2026\n\nTo,\nThe Regional Commissioner - I\n\nSubject: Supply of Extract (VV Details).\nRef: Your office letter No. CPF/16/Sing/13/25\nYour communication dated: 23-03-2026\n\nRespected Sir/Madam,\n\nWe acknowledge receipt of your communication on the subject \"Supply of Extract (VV Details)\". The matter has been taken on record and is receiving our attention.\nThe necessary action is being initiated, and you will be apprised of the outcome in due course. Please quote the reference noted above in all future correspondence.\n\nYours faithfully,\n\n(Signature)\n\n— Forged on-device by ODA · mirrors the input's structure, register and references",
       "rEngine": "adaptive",
       "responseOk": true,
       "ms": 12
@@ -49,10 +49,10 @@
       "rating": "complete",
       "ratingNote": "Complete letter-for-letter translation — no CMPFO reference family detected; structure preserved, every line translated.",
       "ratingScore": 92,
-      "response": "Date: 06 September 2026\n\nTo,\nDr. Sujata Mishra\n\nSubject: Notice - Annual Examination Schedule for the Academic Session 2025-26\nRef: No. KU/ADMIN/2026/412\n\nRespected Sir/Madam,\n\nReceipt of the notification on \"Notice - Annual Examination Schedule for the Academic Session 2025-26\" is hereby acknowledged. The contents have been duly noted for compliance.\nAll concerned have been apprised of the instructions contained therein, and compliance reports will be submitted as required.\n\nYours faithfully,\n\n(Signature)\n\n— Forged on-device by ODA · mirrors the input's structure, register and references",
+      "response": "Date: 11 September 2026\n\nTo,\nDr. Sujata Mishra\n\nSubject: Notice - Annual Examination Schedule for the Academic Session 2025-26\nRef: No. KU/ADMIN/2026/412\n\nRespected Sir/Madam,\n\nReceipt of the notification on \"Notice - Annual Examination Schedule for the Academic Session 2025-26\" is hereby acknowledged. The contents have been duly noted for compliance.\nAll concerned have been apprised of the instructions contained therein, and compliance reports will be submitted as required.\n\nYours faithfully,\n\n(Signature)\n\n— Forged on-device by ODA · mirrors the input's structure, register and references",
       "rEngine": "adaptive",
       "responseOk": true,
-      "ms": 32
+      "ms": 27
     }
   ]
 }
