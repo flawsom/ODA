@@ -30,10 +30,10 @@
     },
     "samples/Complaint_Non-Delivery-Pension_P-Wing-Digilocker.txt": {
       "hash": "1f893983f5798ac8",
-      "engine": "adaptive",
+      "engine": "neural:qwen3:4b",
       "tEngine": "adaptive",
       "rEngine": "adaptive",
-      "rating": "complete"
+      "rating": "partial"
     },
     "samples/Extract-Out_VV-Details_Ravindra-Yadav_RNJ-12-1011.txt": {
       "hash": "763444d5bff26fb0",
